@@ -22,11 +22,11 @@ function shell(view){
     <aside><div class="brand"><span>↻</span><b>BuildSync</b></div>
       <p class="muted">${esc(db.user.company)}</p>
       <nav>
-        <button data-view="dashboard">Dashboard</button>
-        <button data-view="reports">Daily Reports</button>
-        <button data-view="projects">Projects</button>
-        <button data-view="approvals">Approvals <i>${db.reports.filter(r=>r.status==="Pending Approval").length}</i></button>
-        <button data-view="sync">Sync Queue <i>${db.queue.length}</i></button>
+        <button data-view="dashboard"><span class="navicon">⌂</span><span class="navlabel">Dashboard</span></button>
+        <button data-view="reports"><span class="navicon">▣</span><span class="navlabel">Daily Reports</span></button>
+        <button data-view="projects"><span class="navicon">▤</span><span class="navlabel">Projects</span></button>
+        <button data-view="approvals"><span class="navicon">✓</span><span class="navlabel">Approvals</span><i>${db.reports.filter(r=>r.status==="Pending Approval").length}</i></button>
+        <button data-view="sync"><span class="navicon">↻</span><span class="navlabel">Sync Queue</span><i>${db.queue.length}</i></button>
       </nav>
       <div class="sidebar-bottom"><small>Logged in as</small><strong>${esc(db.user.name)}</strong><small>${esc(db.user.role)}</small></div>
     </aside>
