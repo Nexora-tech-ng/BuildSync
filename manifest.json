@@ -1,0 +1,9 @@
+{
+  "name":"BuildSync",
+  "short_name":"BuildSync",
+  "start_url":"./",
+  "display":"standalone",
+  "background_color":"#F2F4F7",
+  "theme_color":"#0D1B2A",
+  "description":"Digital construction site reporting and project operations."
+}
