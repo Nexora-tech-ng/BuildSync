@@ -45,17 +45,41 @@ const statusClass = s => String(s || "").toLowerCase().replaceAll(" ","-");
 function save(){localStorage.setItem(KEY,JSON.stringify(db));}
 
 function friendlyAuthError(error){
-  const messages={
-    "auth/email-already-in-use":"An account already exists with this email address.",
-    "auth/invalid-email":"Please enter a valid email address.",
-    "auth/weak-password":"Password is too weak. Use at least 6 characters.",
-    "auth/invalid-credential":"Email or password is incorrect.",
-    "auth/user-not-found":"No BuildSync account was found with this email.",
-    "auth/wrong-password":"Email or password is incorrect.",
-    "auth/too-many-requests":"Too many attempts. Please wait and try again.",
-    "auth/network-request-failed":"Network error. Check your internet connection and try again."
+  console.error("Firebase Authentication error:", error);
+
+  const messages = {
+    "auth/email-already-in-use":
+      "An account already exists with this email address.",
+
+    "auth/invalid-email":
+      "Please enter a valid email address.",
+
+    "auth/weak-password":
+      "Password is too weak. Use at least 6 characters.",
+
+    "auth/invalid-credential":
+      "Email or password is incorrect.",
+
+    "auth/user-not-found":
+      "No BuildSync account was found with this email.",
+
+    "auth/wrong-password":
+      "Email or password is incorrect.",
+
+    "auth/too-many-requests":
+      "Too many attempts. Please wait and try again.",
+
+    "auth/network-request-failed":
+      "Network error. Check your internet connection and try again.",
+
+    "auth/unauthorized-domain":
+      "This website domain is not authorized in Firebase.",
+
+    "auth/operation-not-allowed":
+      "Email/password authentication is not enabled in Firebase."
   };
-  return messages[error?.code] || "Authentication failed. Please try again.";
+
+  return `${messages[error?.code] || "Authentication failed."} (${error?.code || "unknown"})`;
 }
 
 function authScreen(mode="login",message=""){
